@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <scripts src= "main.js"></script>
+    <title>dogXcat</title>
 
 </head>
+
 <body>
-    <h1>dogXcat</h1>
+    <h1 style="margin-left: 12%">dogXcat</h1>
     <div>
-        <button onclick="imgcat()">CAT</button>
+        <button onclick="imgdog()" class="b_estilo" style="background-color: #EDB86A;">dog</button>
         <label id="2">X</label>
-        <button onclick="imgdog()">DOG</button>
+        <button onclick="imgcat()" class="b_estilo" style="background-color: #F3BBF4;">cat</button>
     </div>
     <div>
         <img id="cachorro" src="">
         <img id="gato" src="">
     </div>
-    <button onclick="hist()">HISTORIA</button>
-   
-    <h3 id ="txt">TEXTO</h3>
-    </a>
+
+    <h3 id="txt"></h3>
+    <button onclick="hist()" class="h_estilo">history</button>
 
     <script>
-        function imgcat(){
+        function imgcat() {
             fetch("https://cataas.com/cat")
                 .then(res => res.blob())
                 .then(res => {
@@ -38,7 +38,7 @@
                 })
         }
 
-        function imgdog(){
+        function imgdog() {
             fetch("https://dog.ceo/api/breeds/image/random")
                 .then(res => res.json())
                 .then(res => {
@@ -49,16 +49,69 @@
                     console.log(err)
                 })
         }
-    
-        var textos = ["O GATO MORDEU O RADO DESTE CACHORRO", 
-        "ESTE CACHORRO SE CHAMA RUFUS E ESTE GATO TOM", 
-        "O CACHORRO LAMBEU O GATO", 
-        "O GATO MATOU O RATO E O CACHORRO MORDEU O GATO","O RATO ROEU O REI DE ROMA, O GATO LAMBEU O PÉ DE PAU E O CACHORRO MORDEU O SEU PÉ"]
-    
-        function hist(){
 
-            document.getElementById("txt").innerHTML = textos[2]
+        let textos = ["O GATO MORDEU O RADO DESTE CACHORRO",
+            "ESTE CACHORRO SE CHAMA RUFUS E ESTE GATO TOM",
+            "O CACHORRO LAMBEU O GATO",
+            "O GATO MATOU O RATO E O CACHORRO MORDEU O GATO",
+            "O RATO ROEU O REI DE ROMA, O GATO LAMBEU O PÉ DE PAU E O CACHORRO MORDEU O SEU PÉ"]
+
+        function hist() {
+            const randomIndex = Math.floor(Math.random() * textos.length);
+            document.getElementById("txt").innerHTML = textos[randomIndex]
         }
+
     </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Mooli&display=swap');
+
+        body {
+            font-family: 'Mooli', sans-serif;
+        }
+
+        img {
+            padding: 5px;
+            width: 200px;
+            margin-top: 34px;
+
+        }
+
+        div,
+        h3 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .h_estilo {
+            font-family: 'Mooli', sans-serif;
+            border-radius: 4px;
+            margin-left: 19%;
+            background-color: #BDE990;
+            width: 102px;
+            padding: 8px;
+            border: none;
+        }
+
+        .b_estilo {
+            font-family: 'Mooli', sans-serif;
+            border-radius: 4px;
+            border: none;
+            margin-left: 7px;
+            margin-right: 7px;
+            width: 102px;
+            padding: 8px;
+        }
+
+        h3 {
+            margin-left: 32%;
+            margin-right: 32%;
+            margin-top: 2%;
+        }
+    </style>
+
 </body>
+
 </html>
